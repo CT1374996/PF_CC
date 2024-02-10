@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     root to: "homes#top"
-    get 'amout' => 'homes#amout'
-    get 'users/mypage' => 'user#show'
+    get 'about' => 'homes#about'
+    get 'users/mypage' => 'users#show'
+    get 'users/profile/edit' => 'users#edit'
+    patch 'users/profile/update' => 'users#update'
+    get 'users/confirm' => 'users#confirm'
+    patch 'users_withdrawal' => 'users#withdrawal'
   end
   namespace :admin do
     root to: "homes#top"
