@@ -13,7 +13,9 @@
   <body>
     <header>
       <h1>ロゴ</h1>
-      <% if user_signed_in? %>
+      <% if admin_signed_in? %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <% elsif user_signed_in? %>
       <%= link_to "概要", about_path %>
       <%= link_to "マイページ", users_mypage_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
