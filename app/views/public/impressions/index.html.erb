@@ -1,0 +1,5 @@
+<h2>投稿一覧</h2>
+<% @impressions.each do |impression| %>
+<%= impression.title %>
+<%= impression.created_at.stmptime('%Y/%m/%d') %>
+<% end %>

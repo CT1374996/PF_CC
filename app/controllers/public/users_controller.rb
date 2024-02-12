@@ -10,7 +10,8 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(customer_params)
+    if @user.update(user_params)
+      flash[:notice] = "プロフィールを変更しました"
       redirect_to users_mypage_path(current_user)
     else
       render :edit
@@ -25,7 +26,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_active: false)
     reset_session
-    redirect_to root_path
+    # redirect_to root_path
   end
 
   private

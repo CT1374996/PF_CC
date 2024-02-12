@@ -1,1 +1,12 @@
-<h1>マイページ</h1>
+<%= flash[:notice] %>
+<h3>マイページ</h3>
+<div>名前：<%= @user.name %></div>
+<div>自己紹介</div>
+<div><%= @user.introduction %></div>
+<%= link_to "編集する", users_mypage_edit_path %>
+
+<div><%= link_to "新規投稿", new_impression_path %></div>
+<div><%= @user.name %>さんの投稿一覧</div>
+<div>フォロー一覧</div>
+<div>フォロワー一覧</div>
+<div>いいねした投稿一覧</div>

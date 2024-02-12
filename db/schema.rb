@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2024_02_11_153232) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "impressions", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.integer "user_id", null: false

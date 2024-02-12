@@ -10,10 +10,11 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'about' => 'homes#about'
     get 'users/mypage' => 'users#show'
-    get 'users/profile/edit' => 'users#edit'
-    patch 'users/profile/update' => 'users#update'
+    get 'users/mypage/edit' => 'users#edit'
+    patch 'users/mypage/update' => 'users#update'
     get 'users/confirm' => 'users#confirm'
     patch 'users_withdrawal' => 'users#withdrawal'
+    resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
   namespace :admin do
     root to: "homes#top"
