@@ -10,6 +10,7 @@ class Public::ImpressionsController < ApplicationController
 
   def create
     @impression = Impression.new(impression_params)
+    @impression.user_id = current_user.id
     if @impression.save
       flash[:notice] = "投稿しました"
       redirect_to impression_path(@impression.id)

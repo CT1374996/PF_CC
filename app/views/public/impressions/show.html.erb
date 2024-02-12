@@ -1,4 +1,6 @@
 <h3>投稿詳細</h3>
-<%= flash[:notice] %>
-<%= @impression.title %>
-<%= @impression.body %>
+<div><%= flash[:notice] %></div>
+<div><%= @impression.title %></div>
+<div><%= @impression.body %></div>
+
+<div><%= link_to "編集する", edit_impression_path(@impression.id) %></div>
