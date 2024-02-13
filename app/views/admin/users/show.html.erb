@@ -1,0 +1,5 @@
+<h3><%= @user.name %>さんの会員情報</h3>
+<%= @user.id %>
+<%= @user.name %>
+<%= @user.email %>
+<% if @user.is_active == true %>有効<% else %>退会<% end %>

@@ -7,7 +7,6 @@
 <div><%= link_to "削除", impression_path(@impression.id), method: :delete, "data_confirm" => "後悔しませんね？" %></div>
 <% end %>
 
-<div>コメント件数：<%= @impression.comments.count %>件</div>
 <% @impression.comments.each do |comment| %>
 <%= comment.user.name %>
 <%= comment.created_at.strftime('%Y/%m/%d') %>

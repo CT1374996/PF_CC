@@ -1,0 +1,7 @@
+<h3>会員一覧</h3>
+<% @users.each do |user| %>
+<%= user.id %>
+<%= link_to admin_user_path(user.id) do %><%= user.name %><% end %>
+<%= user.email %>
+<% if user.is_active == true %>有効<% else %>退会<% end %>
+<% end %>

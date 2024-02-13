@@ -7,12 +7,12 @@ class Public::CommentsController < ApplicationController
     comment.save
     redirect_to impression_path(@impression.id)
   end
-  
+
   def destroy
     Comment.find(params[:id]).destroy
     redirect_to impression_path(params[:impression_id])
   end
-  
+
   private
   def comment_params
     params.require(:comment).permit(:comment)

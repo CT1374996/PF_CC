@@ -14,6 +14,7 @@
     <header>
       <h1>ロゴ</h1>
       <% if admin_signed_in? %>
+      <%= link_to "会員一覧", admin_users_path %>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       <% elsif user_signed_in? %>
       <%= link_to "概要", about_path %>

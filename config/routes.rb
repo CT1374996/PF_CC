@@ -15,11 +15,15 @@ Rails.application.routes.draw do
     get 'users/confirm' => 'users#confirm'
     patch 'users_withdrawal' => 'users#withdrawal'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:create, :destroy]
-  end
+      resources :comments, only: [:create, :destroy] 
+      end
   end
   namespace :admin do
     root to: "homes#top"
+    resources :impressions, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy] 
+      end
+    resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
