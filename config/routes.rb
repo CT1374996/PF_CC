@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     patch 'users/mypage/update' => 'users#update'
     get 'users/confirm' => 'users#confirm'
     patch 'users_withdrawal' => 'users#withdrawal'
-    resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
+  end
   end
   namespace :admin do
     root to: "homes#top"
