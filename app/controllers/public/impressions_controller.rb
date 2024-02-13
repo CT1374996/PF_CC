@@ -47,6 +47,11 @@ class Public::ImpressionsController < ApplicationController
     redirect_to users_mypage_path
   end
 
+  def search
+    @keyword = params[:impression][:search] if params[:impression]
+    @impressions_all = Impression.search(@keyword)
+  end
+
   private
   def impression_params
     params.require(:impression).permit(:title, :body)
