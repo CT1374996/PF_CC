@@ -4,5 +4,29 @@
 <div><%= @impression.body %></div>
 <% if @impression.user == current_user %>
 <div><%= link_to "編集", edit_impression_path(@impression.id) %></div>
-<div><%= link_to "削除", impression_path(@impression.id), method: :delete, "data_confirm" => "後悔しませんね？" %></div>
+<div><%= link_to "削除", impression_path(@impression), method: :delete, "data_confirm" => "後悔しませんね？" %></div>
+<% end %>
+
+<% if @impression.favorited_by?(current_user) %>
+<%= link_to impression_favorite_path(@impression), method: :delete do %>
+<%= @impression.favorites.count %>いいね
+<% end %>
+<% else %>
+<%= link_to impression_favorite_path(@impression), method: :post do %>
+<%= @impression.favorites.count %>いいね
+<% end %>
+<% end %>
+
+
+<% @impression.comments.each do |comment| %>
+<%= comment.user.name %>
+<%= comment.comment %>
+<% if comment.user == current_user %>
+<%= link_to "削除", impression_comment_path(comment.impression, comment), method: :delete %>
+<% end %>
+<% end %>
+
+<%= form_with model: [@impression, @comment] do |f| %>
+<%= f.text_area :comment %>
+<%= f.submit '送信'%>
 <% end %>

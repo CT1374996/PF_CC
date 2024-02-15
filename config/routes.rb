@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post '/search', to: 'impressions#search'
     get '/search', to: 'impressions#search'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       end
   end

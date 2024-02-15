@@ -4,8 +4,7 @@ class Impression < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  def self.search(search)
-    return Impression.all unless search
-    Impression.where(['title LIKE(?) OR body LIKE(?)', "%#{search}", "%#{search}"])
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end

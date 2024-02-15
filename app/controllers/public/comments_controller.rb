@@ -2,8 +2,9 @@ class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   def create
     @impression = Impression.find(params[:impression_id])
-    @comment = current_user.impression_comments.new(impression_params)
-    @comment.impression_id = imression_id
+    comment = Comment.new(comment_params)
+    comment.user_id = current_user.id
+    comment.impression_id = @impression.id
     comment.save
     redirect_to impression_path(@impression.id)
   end

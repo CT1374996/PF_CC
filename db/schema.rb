@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2024_02_11_153232) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
+    t.integer "impression_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2024_02_11_153232) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "impression_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

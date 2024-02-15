@@ -41,15 +41,10 @@ class Public::ImpressionsController < ApplicationController
   end
 
   def destroy
-    impression = Inmpression.find(params[:id])
+    impression = Impression.find(params[:id])
     impression.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to users_mypage_path
-  end
-
-  def search
-    @keyword = params[:impression][:search] if params[:impression]
-    @impressions_all = Impression.search(@keyword)
   end
 
   private

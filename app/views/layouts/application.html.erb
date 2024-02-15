@@ -26,9 +26,6 @@
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
       <% end %>
-      <div><%= form_with(url: search_path, scope: :post, local: true) do |f| %>
-      <%= f.text_field :search %>
-      <%= f.submit "検索" %><% end %></div>
     </header>
     <main><%= yield %></main>
     <footer></footer>
