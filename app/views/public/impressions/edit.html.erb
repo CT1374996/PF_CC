@@ -1,6 +1,12 @@
 <h2>投稿編集</h2>
 <%= form_with model: @impression, url: impression_path(@impression.id), method: :patch do |f| %>
-<div><%= f.text_field :title %></div>
-<div><%= f.text_area :body %></div>
-<div><%= f.submit '編集完了' %></div>
+<%= f.text_field :title %>
+<%= f.text_area :body %>
+<% if @impression.is_draft == true %>
+<%= f.submit '投稿する', :name => 'publicize_draft' %>
+<%= f.submit '下書きを更新', :name => 'update_draft' %>
+<% else %>
+<%= f.submit '更新する', :name => 'update_post' %>
 <% end %>
+<% end %>
+<%= link_to "削除する", impression_path(@impression), method: :delete, data: {confirm: "本当に削除しますか？"} %>
