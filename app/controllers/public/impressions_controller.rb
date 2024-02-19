@@ -10,19 +10,10 @@ class Public::ImpressionsController < ApplicationController
 
   def create
     @impression = Impression.new(impression_params)
-    @impression.user_id = current_user.id
-    if params[:post]
-      if @impression.save(context: :publicize)
-        redirect_to impression_path(@impression.id), notice: "投稿しました"
-      else
-        render :new, alert: "投稿できませんでした"
-      end
+    if @impression.save
+      redirect_to impression_path(@impression.id)
     else
-      if @impression.update(is_draft: true)
-        redirect_to users_mypage_path(current_user), notice: "下書きを保存しました"
-      else
-        render :new, alert: "保存できませんでした"
-      end
+      render :new
     end
   end
 
@@ -33,33 +24,14 @@ class Public::ImpressionsController < ApplicationController
 
   def edit
     @impression = Impression.find(params[:id])
-    @impression.user_id = current_user.id
-    @user = @impression.user
   end
 
   def update
     @impression = Impression.find(params[:id])
-    if params[:publicize_draft]
-      @impression.attributes = impression_params
-      if @impression.save(context: :publicize)
-        redirect_to post_impression_path(@impression.id), notice: "投稿しました"
-      else
-        @impression.is_draft = true
-      render :edit, alert: "投稿しませんでした"
-      end
-    elsif params[:update_post]
-      @impression.attributes = impression_params
-      if impression.save(context: :publicize)
-        redirect_to post_impression_path(@impression.id), notice: "内容を更新しました"
-      else
-        render :edit, alert: "更新できませんでした"
-      end
+    if @impression.update(impression_params)
+      redirect_to impression_path(@impression.id)
     else
-      if @impression.update(impression_params)
-        redirect_to impression_path(@impression.id), notice: "下書きを更新しました"
-      else
-        render :edit, alert: "下書きが更新されませんでした"
-      end
+      render :edit
     end
   end
 

@@ -1,0 +1,8 @@
+ja:
+enum:
+impression:
+status:
+draft: "下書き"
+published: "公開"
+delete: "削除"
+private: "非公開"
