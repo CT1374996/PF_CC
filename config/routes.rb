@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#show'
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/update' => 'users#update'
+    get 'users/impressions/index' => 'users#index'
     get 'users/confirm' => 'users#confirm'
     patch 'users_withdrawal' => 'users#withdrawal'
     post '/search', to: 'impressions#search'

@@ -1,5 +1,7 @@
 <h3>投稿詳細</h3>
+<% if user_signed_in? %>
 <%= flash[:notice] %>
+<% end %>
 <%= @impression.title %>
 <%= @impression.body %>
 <% if @impression.user == current_user %>
@@ -7,6 +9,7 @@
 <%= link_to "削除", impression_path(@impression), method: :delete, "data_confirm" => "後悔しませんね？" %>
 <% end %>
 
+<% if user_signed_in? %>
 <% if @impression.favorited_by?(current_user) %>
 <%= link_to impression_favorite_path(@impression), method: :delete do %>
 <%= @impression.favorites.count %>いいね
@@ -15,6 +18,9 @@
 <%= link_to impression_favorite_path(@impression), method: :post do %>
 <%= @impression.favorites.count %>いいね
 <% end %>
+<% end %>
+<% else %>
+<%= @impression.favorites.count %>いいね
 <% end %>
 
 

@@ -3,10 +3,10 @@
 <div>名前：<%= @user.name %></div>
 <div>自己紹介</div>
 <div><%= @user.introduction %></div>
-<%= link_to "編集する", users_mypage_edit_path %>
+<%= link_to "自己紹介を編集する", users_mypage_edit_path %>
 
 <div><%= link_to "新規投稿", new_impression_path %></div>
-<div><%= @user.name %>さんの投稿一覧</div>
+<div><%= link_to users_impressions_index_path do %><%= @user.name %>さんの投稿一覧<% end %></div>
 <div>フォロー一覧</div>
 <div>フォロワー一覧</div>
 <div>いいねした投稿一覧</div>

@@ -18,6 +18,11 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def index
+    @user = current_user
+    @impressions = @user.impressions
+  end
+
   def confirm
     @user = current_user
   end
