@@ -1,0 +1,4 @@
+<h3>投稿一覧</h3>
+<% @impressions.each do |impression| %>
+<%= link_to admin_impression_path(impression.id) do %><%= impression.title %><% end %>
+<% end %>

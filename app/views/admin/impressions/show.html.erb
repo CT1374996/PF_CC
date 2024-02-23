@@ -1,0 +1,8 @@
+<%= @impression.title %>
+<%= @impression.body %>
+
+<% @impression.comments.each do |comment| %>
+<%= comment.user.name %>
+<%= comment.comment %>
+<%= link_to "削除", admin_impression_comment_path(comment.impression, comment), method: :delete %>
+<% end %>
