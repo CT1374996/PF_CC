@@ -14,9 +14,8 @@ Rails.application.routes.draw do
     patch 'users/mypage/update' => 'users#update'
     get 'users/impressions/index' => 'users#index'
     get 'users/confirm' => 'users#confirm'
-    patch 'users_withdrawal' => 'users#withdrawal'
-    post '/search', to: 'impressions#search'
-    get '/search', to: 'impressions#search'
+    patch 'users/withdrawal' => 'users#withdrawal'
+    get '/search' => 'searches#search'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]

@@ -1,7 +1,17 @@
+<div class="container">
 <h3>会員一覧</h3>
-<% @users.each do |user| %>
-<%= user.id %>
-<%= link_to admin_user_path(user.id) do %><%= user.name %><% end %>
-<%= user.email %>
-<% if user.is_active == true %>有効<% else %>退会<% end %>
-<% end %>
+<table class="table">
+  <tr>
+    <th>会員ID</th>
+    <th>名前</th>
+    <th>ステータス</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= link_to admin_user_path(user.id) do %><%= user.name %><% end %></td>
+    <td><% if user.is_active == true %>有効<% else %>退会<% end %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
