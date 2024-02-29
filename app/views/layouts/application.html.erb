@@ -12,20 +12,21 @@
 
   <body>
     <header>
-      <h1>ロゴ</h1>
       <% if admin_signed_in? %>
+      <h4><%= link_to "古今東西ゲーム愛好会", admin_root_path %></h4>
       <%= link_to "会員一覧", admin_users_path %>
       <%= link_to "投稿一覧", admin_impressions_path %>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       <% elsif user_signed_in? %>
-      <%= link_to "概要", about_path %>
+      <h4><%= link_to "古今東西ゲーム愛好会", root_path %></h4>
       <%= link_to "マイページ", users_mypage_path %>
       <%= link_to "投稿一覧", impressions_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% else %>
-      <%= link_to "概要", about_path %>
+      <h4><%= link_to "古今東西ゲーム愛好会", root_path %></h4>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "投稿一覧", impressions_path %>
       <% end %>
     </header>
     <main><%= yield %></main>

@@ -1,12 +1,14 @@
-<div>
+<div class="container">
 <% if user_signed_in? %>
 <%= flash[:notice] %>
 <% end %>
 <h4>タイトル：<%= @impression.title %></h4>
 <div><%= @impression.body %></div>
+<div>投稿日：<%= @impression.created_at.strftime('%Y/%m/%d') %></div>
+<div>更新日：<%= @impression.updated_at.strftime('%Y/%m/%d') %></div>
 <% if @impression.user == current_user %>
 <%= link_to "編集", edit_impression_path(@impression.id) %>
-<%= link_to "削除", impression_path(@impression), method: :delete, "data_confirm" => "後悔しませんね？" %>
+<%= link_to "削除", impression_path(@impression), method: :delete, data: {confirm: => "本当に削除しますか？"} %>
 <% end %>
 
 <div><% if user_signed_in? %>
@@ -25,8 +27,8 @@
 
 <div>コメント一覧
 <% @impression.comments.each do |comment| %>
-<%= comment.user.name %>
-<%= comment.comment %>
+<div><%= comment.user.name %></div>
+<div><%= comment.comment %></div>
 <% if comment.user == current_user %>
 <%= link_to "削除", impression_comment_path(comment.impression, comment), method: :delete %>
 <% end %>

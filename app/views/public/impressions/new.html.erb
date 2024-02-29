@@ -1,6 +1,8 @@
+<div class="container">
 <h2>新規投稿</h2>
 <%= form_with model: @impression, url: impressions_path, method: :post do |f| %>
-タイトル<%= f.text_field :title %>
-本文<%= f.text_area :body %>
+<div>タイトル<br><%= f.text_field :title %></div>
+<div>本文<br><%= f.text_area :body %></div>
 <%= f.submit "投稿する" %>
 <% end %>
+</div>
