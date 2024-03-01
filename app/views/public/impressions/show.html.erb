@@ -8,7 +8,7 @@
 <div>更新日：<%= @impression.updated_at.strftime('%Y/%m/%d') %></div>
 <% if @impression.user == current_user %>
 <%= link_to "編集", edit_impression_path(@impression.id) %>
-<%= link_to "削除", impression_path(@impression), method: :delete, data: {confirm: => "本当に削除しますか？"} %>
+<%= link_to "削除", impression_path(@impression), method: :delete, data: {confirm: "本当に削除しますか？"} %>
 <% end %>
 
 <div><% if user_signed_in? %>
