@@ -1,3 +1,4 @@
+<div class="container">
 <h1>古今東西ゲーム愛好会へようこそ！</h1>
 
 <h2>ご案内</h2>
@@ -5,6 +6,10 @@
 
 <h3>新着投稿</h3>
 <% @impressions.each do |impression| %>
-<%= link_to impression_path(impression.id) do %><%= impression.title %><% end %>
+<div><%= link_to impression_path(impression.id) do %>
+<%= impression.title %>
+<%= impression.created_at.strftime('%Y/%m/%d') %>
+<% end %></div>
 <% end %>
 <%= link_to "全ての投稿を見る", impressions_path %>
+</div>

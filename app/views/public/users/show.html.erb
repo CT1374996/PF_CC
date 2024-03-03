@@ -9,4 +9,4 @@
 <div><%= link_to users_impressions_index_path do %><%= @user.name %>さんの投稿一覧<% end %></div>
 <div>フォロー一覧</div>
 <div>フォロワー一覧</div>
-<div>いいねした投稿一覧</div>
+<div><%= link_to "いいねした投稿一覧", users_favorites_path %></div>

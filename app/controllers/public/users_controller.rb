@@ -23,6 +23,12 @@ class Public::UsersController < ApplicationController
     @impressions = @user.impressions
   end
 
+  def favorites
+    @user = current_user
+    @favorite_impressions = @user.favorites.includes(:impression)
+    render 'favorites'
+  end
+
   def confirm
     @user = current_user
   end
