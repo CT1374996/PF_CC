@@ -11,5 +11,7 @@
 <%= impression.created_at.strftime('%Y/%m/%d') %>
 <% end %></div>
 <% end %>
-<%= link_to "全ての投稿を見る", impressions_path %>
+<div><%= link_to "全ての投稿を見る", impressions_path %></div>
 </div>
+
+<div><%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path,method: :post %></div>

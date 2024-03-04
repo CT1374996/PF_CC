@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         def self.guest
+           find_or_create_by!(email: 'guest@example.com') do |user|
+             user.password = SecureRandam.urlsafe_base64
+           end
+         end
+
          has_many :impressions, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :favorites, dependent: :destroy

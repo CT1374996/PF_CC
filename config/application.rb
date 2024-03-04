@@ -6,6 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.autoload_paths += Dir[Rails.root.join('app', 'models', '**/')]
+
 module PFKokontozaiGameIApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
