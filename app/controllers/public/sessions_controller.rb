@@ -15,7 +15,7 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     user = User.guest
     sign_in user
-    redirect_to root_path
+    redirect_to impressions_path
     flash[:notice] = "ゲストがログインしました"
   end
   # before_action :configure_sign_in_params, only: [:create]
