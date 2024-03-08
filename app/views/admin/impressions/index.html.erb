@@ -1,4 +1,16 @@
+<div class="container">
 <h3>投稿一覧</h3>
-<% @impressions.each do |impression| %>
-<%= link_to admin_impression_path(impression.id) do %><%= impression.title %><% end %>
-<% end %>
+<table class="table">
+  <tr>
+    <th>タイトル</th>
+    <th>投稿者</th>
+    <th>投稿日</th>
+  </tr>
+  <% @impressions.each do |impression| %>
+  <tr>
+    <td><%= link_to admin_impression_path(impression.id) do %><%= impression.title %><% end %></td>
+    <td><%= impression.user.name %></td>
+    <td><%= impression.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <% end %>
+</table>

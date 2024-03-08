@@ -25,12 +25,16 @@
 <%= @impression.favorites.count %>いいね
 <% end %></div>
 
-<div>コメント一覧
-<% @impression.comments.each do |comment| %>
+<h5>コメント一覧</h5>
+<% if @impression.comments.empty? %>
+<div>まだコメントはありません</div>
+<% else %>
+<div><% @impression.comments.each do |comment| %>
 <div><%= comment.user.name %></div>
 <div><%= comment.comment %></div>
 <% if comment.user == current_user %>
 <%= link_to "削除", impression_comment_path(comment.impression, comment), method: :delete %>
+<% end %>
 <% end %>
 <% end %>
 </div>

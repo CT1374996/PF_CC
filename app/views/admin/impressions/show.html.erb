@@ -1,8 +1,19 @@
-<%= @impression.title %>
-<%= @impression.body %>
+<div class="container">
+<h4>タイトル：<%= @impression.title %></h4>
+<div><%= @impression.body %></div>
+<div>投稿日：<%= @impression.created_at.strftime('%Y/%m/%d')%></div>
+<div>作成日：<%= @impression.updated_at.strftime('%Y/%m/%d')%></div>
+<div><%= link_to "削除", admin_impression_path(@impression), method: :delete, data: {confirm: "管理者権限により削除しますか？"}%></div>
 
-<% @impression.comments.each do |comment| %>
-<%= comment.user.name %>
-<%= comment.comment %>
-<%= link_to "削除", admin_impression_comment_path(comment.impression, comment), method: :delete %>
+<h5>コメント一覧</h5>
+<% if @impression.comments.empty? %>
+<div>まだコメントはありません</div>
+<% else %>
+<div class="row"><% @impression.comments.each do |comment| %>
+<div><%= comment.user.name %></div>
+<div><%= comment.comment %></div>
+<%= link_to "削除", admin_impression_comment_path(comment.impression, comment), method: :delete, data: {confirm: "管理者権限により削除しますか？"} %>
 <% end %>
+<% end %>
+</div>
+</div>
