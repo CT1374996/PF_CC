@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     root to: "homes#top"
+    get '/search' => 'searches#search'
     resources :impressions, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
       end

@@ -2,7 +2,7 @@
 <% if @range == "User" %>
 <h3>ユーザー検索結果</h3>
 <% @users.each do |user| %>
-<div><%= link_to users_mypage_path(user.id) do %><%= user.name %><% end %></div>
+<div><%= link_to admin_user_path(user.id) do %><%= user.name %><% end %></div>
 <% end %>
 
 <% else %>
@@ -16,7 +16,7 @@
   </tr>
   <% @impressions.each do |impression| %>
   <tr>
-    <td><%= link_to impression_path(impression.id) do %><%= impression.title %><% end %></td>
+    <td><%= link_to admin_impression_path(impression.id) do %><%= impression.title %><% end %></td>
     <td><%= impression.user.name %></td>
     <td><%= impression.created_at.strftime('%Y/%m/%d') %></td>
   </tr>

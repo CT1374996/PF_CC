@@ -9,9 +9,8 @@
 <% if @impression.comments.empty? %>
 <div>まだコメントはありません</div>
 <% else %>
-<div class="row"><% @impression.comments.each do |comment| %>
-<div><%= comment.user.name %></div>
-<div><%= comment.comment %></div>
+<div><% @impression.comments.each do |comment| %>
+<div><%= comment.user.name %>：<%= comment.comment %></div>
 <%= link_to "削除", admin_impression_comment_path(comment.impression, comment), method: :delete, data: {confirm: "管理者権限により削除しますか？"} %>
 <% end %>
 <% end %>

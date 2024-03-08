@@ -30,15 +30,14 @@
 <div>まだコメントはありません</div>
 <% else %>
 <div><% @impression.comments.each do |comment| %>
-<div><%= comment.user.name %></div>
-<div><%= comment.comment %></div>
+<div><%= comment.user.name %>：<%= comment.comment %></div>
 <% if comment.user == current_user %>
 <%= link_to "削除", impression_comment_path(comment.impression, comment), method: :delete %>
 <% end %>
 <% end %>
-<% end %>
 </div>
-<div>コメントを送る
+<% end %>
+<div>コメントはここから
 <%= form_with model: [@impression, @comment] do |f| %>
 <%= f.text_area :comment %>
 <%= f.submit '送信'%>

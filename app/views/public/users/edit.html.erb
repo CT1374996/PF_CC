@@ -1,11 +1,26 @@
+<div class="container">
 <h3>マイページ編集</h3>
-<%= form_with model: @user, url: users_mypage_update_path, method: :patch do |f| %>
-<div>名前<%= f.text_field :name %></div>
-<div>メールアドレス<%= f.text_field :email %></div>
-<div>パスワード</div>
-<div>自己紹介</div>
-<%= f.text_area :introduction %>
+<table>
+  <%= form_with model: @user, url: users_mypage_update_path, method: :patch do |f| %>
+  <tr>
+    <td>名前</td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <tr>
+    <td>パスワード</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>自己紹介</td>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+</table>
 <%= f.submit '編集完了' %>
 <% end %>
 
 <div><%= link_to "退会する", users_confirm_path %></div>
+</div>
