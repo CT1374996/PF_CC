@@ -37,10 +37,12 @@
 <% end %>
 </div>
 <% end %>
+<% if user_signed_in? %>
 <div>コメントはここから
 <%= form_with model: [@impression, @comment] do |f| %>
 <%= f.text_area :comment %>
 <%= f.submit '送信'%>
 <% end %>
 </div>
+<% end %>
 </div>

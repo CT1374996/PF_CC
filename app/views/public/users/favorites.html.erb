@@ -1,5 +1,17 @@
 <div class="container">
 <h3>いいねした投稿一覧</h3>
-<% @favorite_impressions.each do |favorite| %>
-<% end %>
+<table class="table">
+  <tr>
+    <th>タイトル</th>
+    <th>投稿者</th>
+    <th>投稿日</th>
+  </tr>
+  <% @favorite_impressions.each do |favorite| %>
+  <tr>
+    <td><%= link_to impression_path(favorite.impression.id) do %><%= favorite.impression.title %><% end %></td>
+    <td><%= favorite.impression.user.name %></td>
+    <td><%= favorite.impression.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <% end %>
+</table>
 </div>
