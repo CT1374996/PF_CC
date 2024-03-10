@@ -1,9 +1,21 @@
 <div class="container">
 <div><%= flash[:notice] %></div>
 <h5>マイページ</h5>
-<div>名前：<%= @user.name %></div>
-<div>自己紹介：<%= @user.introduction %></div>
-<%= link_to "マイページを編集する", users_mypage_edit_path %>
+<div class="row">
+  <div class="col">
+    <div>名前：<%= @user.name %></div>
+    <div>自己紹介：<%= @user.introduction %></div>
+    <%= link_to "マイページを編集する", users_mypage_edit_path %>
+  </div>
+  <div class="col">
+    <% if current_user.following?(@user) %>
+    <%= link_to "フォロー外す", relationships_path(@user_id), method: :delete %>
+    <% else %>
+    <%= link_to "フォローする", relationships_path(@user_id), method: :post %>
+    <% end %>
+  </div>
+</div>
+
 
 <div><%= link_to "新規投稿", new_impression_path %></div>
 <div><%= link_to users_impressions_index_path do %><%= @user.name %>さんの投稿一覧<% end %></div>

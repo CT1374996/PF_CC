@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   def show
     @user = current_user
+    # @user = User.find_by(name: params[:name], email: params[:email])
   end
 
   def edit

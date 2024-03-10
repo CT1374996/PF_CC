@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
     get '/search' => 'searches#search'
+    resources :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings'
+    get 'followers' => 'relationships#followers'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
