@@ -22,14 +22,13 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    # @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @impressions = @user.impressions
   end
 
   def favorites
-    @user = current_user
-    @favorite_impressions = @user.favorites.includes(:impression)
-    render 'favorites'
+    @user = User.find(params[:user_id])
+    @favorite_impressions = Impression.joins(:favorites).where(favorites: {user_id: @user.id})
   end
 
   def confirm

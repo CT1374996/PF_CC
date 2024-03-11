@@ -3,6 +3,7 @@
 <h5>マイページ</h5>
 <div class="row">
   <div class="col">
+    <div>ID：<%= @user.id %></div>
     <div>名前：<%= @user.name %></div>
     <div>自己紹介：<%= @user.introduction %></div>
     <% if user_signed_in? %>
@@ -25,8 +26,8 @@
 <div><%= link_to "新規投稿", new_impression_path %></div>
 <% end %>
 <% end %>
-<div><%= link_to users_impressions_index_path do %><%= @user.name %>さんの投稿一覧<% end %></div>
+<div><%= link_to users_impressions_index_path(@user.id) do %><%= @user.name %>さんの投稿一覧<% end %></div>
 <div>フォロー一覧</div>
 <div>フォロワー一覧</div>
-<div><%= link_to "いいねした投稿一覧", users_favorites_path %></div>
+<div><%= link_to "いいねした投稿一覧", users_favorites_path(@user.id) %></div>
 </div>
