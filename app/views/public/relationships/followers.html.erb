@@ -1,1 +1,6 @@
+<div class="container">
 <h5>フォロワー一覧</h5>
+<% @users.each do |user| %>
+<%= user.name %>
+<% end %>
+</div>

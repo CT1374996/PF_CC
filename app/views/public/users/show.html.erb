@@ -12,13 +12,15 @@
     <% end %>
     <% end %>
   </div>
+  <% if current_user && current_user.id != @user.id %>
   <div class="col">
     <% if current_user.following?(@user) %>
-    <%= link_to "フォロー外す", relationships_path(@user_id), method: :delete %>
+    <%= link_to "フォロー外す", user_relationship_path(user_id: @user.id), method: :delete %>
     <% else %>
-    <%= link_to "フォローする", relationships_path(@user_id), method: :post %>
+    <%= link_to "フォローする", user_relationships_path(user_id: @user.id || ''), method: :post %>
     <% end %>
   </div>
+  <% end %>
 </div>
 
 <% if user_signed_in? %>
@@ -27,7 +29,7 @@
 <% end %>
 <% end %>
 <div><%= link_to users_impressions_index_path(@user.id) do %><%= @user.name %>さんの投稿一覧<% end %></div>
-<div>フォロー一覧</div>
-<div>フォロワー一覧</div>
+<div><%= link_to "フォロー一覧", user_followings_path(@user.id) %></div>
+<div><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></div>
 <div><%= link_to "いいねした投稿一覧", users_favorites_path(@user.id) %></div>
 </div>

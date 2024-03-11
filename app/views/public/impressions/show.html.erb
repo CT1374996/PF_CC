@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
 <%= flash[:notice] %>
 <% end %>
-<h4>タイトル：<%= @impression.title %></h4>
+<h4>タイトル：<%= @impression.title %> 投稿者：<%= @impression.user.name %></h4>
 <div><%= @impression.body %></div>
 <div>投稿日：<%= @impression.created_at.strftime('%Y/%m/%d') %></div>
 <div>更新日：<%= @impression.updated_at.strftime('%Y/%m/%d') %></div>

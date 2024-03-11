@@ -19,11 +19,15 @@ Rails.application.routes.draw do
     get 'users/favorites/:user_id' => 'users#favorites', as: 'users_favorites'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resources :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+    end
     get '/search' => 'searches#search'
-    resources :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings'
-    get 'followers' => 'relationships#followers'
+    # resources :relationships, only: [:create, :destroy]
+    # get 'followings' => 'relationships#followings'
+    # get 'followers' => 'relationships#followers'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
