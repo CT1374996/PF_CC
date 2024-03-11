@@ -2,7 +2,7 @@
 <% if @range == "User" %>
 <h3>ユーザー検索結果</h3>
 <% @users.each do |user| %>
-<div><%= link_to users_mypage_path(user.id) do %><%= user.name %><% end %></div>
+<div><%= link_to user_path(user.id) do %><%= user.name %><% end %></div>
 <% end %>
 
 <% else %>

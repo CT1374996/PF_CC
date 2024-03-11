@@ -5,7 +5,11 @@
   <div class="col">
     <div>名前：<%= @user.name %></div>
     <div>自己紹介：<%= @user.introduction %></div>
-    <%= link_to "マイページを編集する", users_mypage_edit_path %>
+    <% if user_signed_in? %>
+    <% if current_user.id == @user.id %>
+    <%= link_to "マイページを編集する", edit_user_path(current_user.id) %>
+    <% end %>
+    <% end %>
   </div>
   <div class="col">
     <% if current_user.following?(@user) %>
@@ -16,8 +20,11 @@
   </div>
 </div>
 
-
+<% if user_signed_in? %>
+<% if current_user.id == @user.id %>
 <div><%= link_to "新規投稿", new_impression_path %></div>
+<% end %>
+<% end %>
 <div><%= link_to users_impressions_index_path do %><%= @user.name %>さんの投稿一覧<% end %></div>
 <div>フォロー一覧</div>
 <div>フォロワー一覧</div>
