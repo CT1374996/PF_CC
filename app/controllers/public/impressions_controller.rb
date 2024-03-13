@@ -2,6 +2,7 @@ class Public::ImpressionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   def index
     @impressions = Impression.all
+    @impressions = Impression.order(created_at: :desc)
   end
 
   def new

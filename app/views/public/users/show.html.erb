@@ -15,21 +15,24 @@
   <% if current_user && current_user.id != @user.id %>
   <div class="col">
     <% if current_user.following?(@user) %>
-    <%= link_to "フォロー外す", user_relationship_path(user_id: @user.id), method: :delete %>
+    <%= link_to "フォロー外す", user_relationship_path(user_id: @user.id), method: :delete, class:"btn btn-secondary" %>
     <% else %>
-    <%= link_to "フォローする", user_relationships_path(user_id: @user.id || ''), method: :post %>
+    <%= link_to "フォローする", user_relationships_path(user_id: @user.id || ''), method: :post, class:"btn btn-outline-secondary" %>
     <% end %>
   </div>
   <% end %>
 </div>
 
+<div class="row">
 <% if user_signed_in? %>
 <% if current_user.id == @user.id %>
-<div><%= link_to "新規投稿", new_impression_path %></div>
+<div class="col"><%= link_to "新規投稿", new_impression_path %></div>
 <% end %>
 <% end %>
-<div><%= link_to users_impressions_index_path(@user.id) do %><%= @user.name %>さんの投稿一覧<% end %></div>
-<div><%= link_to "フォロー一覧", user_followings_path(@user.id) %></div>
-<div><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></div>
-<div><%= link_to "いいねした投稿一覧", users_favorites_path(@user.id) %></div>
+<div class="col"><%= link_to users_impressions_index_path(@user.id) do %><%= @user.name %>さんの投稿一覧<% end %></div>
+<div class="col"><%= link_to "フォロー一覧", user_followings_path(@user.id) %></div>
+<div class="col"><%= link_to "フォロワー一覧", user_followers_path(@user.id) %></div>
+<div class="col"><%= link_to "いいねした投稿一覧", users_favorites_path(@user.id) %></div>
+</div>
+
 </div>

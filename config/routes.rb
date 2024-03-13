@@ -12,9 +12,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'about' => 'homes#about'
-    # get 'users/mypage' => 'users#show'
-    # get 'users/mypage/edit' => 'users#edit'
-    # patch 'users/mypage/update' => 'users#update'
     get 'users/impressions/index/:user_id' => 'users#index', as: 'users_impressions_index'
     get 'users/favorites/:user_id' => 'users#favorites', as: 'users_favorites'
     get 'users/confirm' => 'users#confirm'
@@ -23,11 +20,8 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
         get 'followings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'
-    end
+      end
     get '/search' => 'searches#search'
-    # resources :relationships, only: [:create, :destroy]
-    # get 'followings' => 'relationships#followings'
-    # get 'followers' => 'relationships#followers'
     resources :impressions, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]

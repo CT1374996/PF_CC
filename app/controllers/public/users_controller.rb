@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_matching_login_user, only: [:edit, :update]
+  # before_action :is_matching_login_user, only: [:edit, :update]
   def show
     # @user = current_user
     @user = User.find(params[:id])
@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "プロフィールを変更しました"
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -24,11 +24,13 @@ class Public::UsersController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @impressions = @user.impressions
+    @impressions = Impression.order(created_at: :desc)
   end
 
   def favorites
     @user = User.find(params[:user_id])
     @favorite_impressions = Impression.joins(:favorites).where(favorites: {user_id: @user.id})
+    @impressions = Impression.order(created_at: :desc)
   end
 
   def confirm
@@ -47,12 +49,12 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :email)
   end
 
-  def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to user_path(current_user)
-    end
-  end
+  #def is_matching_login_user
+    #user = User.find(params[:id])
+    #unless user.id == current_user.id
+      #redirect_to user_path(current_user)
+   # end
+  #end
 
 
 
