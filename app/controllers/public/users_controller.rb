@@ -46,7 +46,7 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :introduction, :email)
+    params.require(:user).permit(:name, :like_game, :introduction, :email)
   end
 
   #def is_matching_login_user
