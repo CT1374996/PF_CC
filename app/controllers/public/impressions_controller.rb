@@ -42,7 +42,7 @@ class Public::ImpressionsController < ApplicationController
     impression = Impression.find(params[:id])
     impression.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to users_mypage_path
+    redirect_to user_path(current_user.id)
   end
 
   private
