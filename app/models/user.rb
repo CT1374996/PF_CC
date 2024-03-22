@@ -48,4 +48,8 @@ class User < ApplicationRecord
          def following?(user)
            followings.include?(user)
          end
+
+         def deactivated?
+           !is_active
+         end
 end
