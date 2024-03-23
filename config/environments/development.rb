@@ -64,6 +64,8 @@ config.hosts << "21fc9daa18324c769b6132b5eb15983e.vfs.cloud9.ap-northeast-1.amaz
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
+# config.web_console.whitelisted_ips = '14.9.4.66'
+
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
