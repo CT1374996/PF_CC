@@ -23,8 +23,10 @@ class Public::UsersController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @impressions = @user.impressions
-    @impressions = Impression.order(created_at: :desc)
+    # @impressions = @user.impressions
+    @impressions = Impression.where(user_id: @user.id).order(created_at: :desc)
+    # @impressions = Impression.where(user_id: @user.id)
+    # @impressions = Impression.order(created_at: :desc)
   end
 
   def favorites
