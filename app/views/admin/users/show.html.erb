@@ -14,4 +14,8 @@
       <td><% if @user.is_active == true %>有効<% else %>退会<% end %></td>
     </tr>
   </table>
+  <% if @user.is_active? %>
+  <div><%= link_to "強制的に退会させる", admin_users_withdrawal_path(@user), method: :patch, data: {confirm: "管理者権限により、強制的に退会させますか？"} %></div>
+  <% else %>
+  <% end %>
 </div>

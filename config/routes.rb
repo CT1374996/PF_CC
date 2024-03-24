@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :impressions, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
       end
+    patch 'users/withdrawal/:user_id' => 'users#withdrawal', as: 'users_withdrawal'
     resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
