@@ -28,7 +28,7 @@
       <% elsif user_signed_in? %>
       <div class="container">
       <h4><%= link_to "古今東西ゲーム愛好会", root_path %></h4>
-      <%= link_to "マイページ", user_path(current_user.id) %>
+      <%= link_to "ユーザーページ", user_path(current_user.id) %>
       <%= link_to "全体投稿一覧", impressions_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <%= form_with url: search_path, local: true, method: :get do |f| %>
