@@ -1,5 +1,6 @@
 class Public::ImpressionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
   def index
     @impressions = Impression.all
     @impressions = Impression.order(created_at: :desc)
@@ -32,6 +33,7 @@ class Public::ImpressionsController < ApplicationController
   def update
     @impression = Impression.find(params[:id])
     if @impression.update(impression_params)
+      flash[:notice] = "編集しました"
       redirect_to impression_path(@impression.id)
     else
       render :edit
@@ -48,5 +50,13 @@ class Public::ImpressionsController < ApplicationController
   private
   def impression_params
     params.require(:impression).permit(:title, :body)
+  end
+
+  def correct_user
+    @impression = Impression.find(params[:id])
+    @user = @impression.user
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
 end
