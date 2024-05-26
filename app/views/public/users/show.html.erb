@@ -8,7 +8,9 @@
     <div>自己紹介：<%= @user.introduction %></div>
     <% if user_signed_in? %>
     <% if current_user.id == @user.id %>
+    <% if @user.name != "guest_user" %>
     <%= link_to "マイページを編集する", edit_user_path(current_user.id) %>
+    <% end %>
     <% end %>
     <% end %>
   </div>
