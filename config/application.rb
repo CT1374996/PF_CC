@@ -8,6 +8,13 @@ Bundler.require(*Rails.groups)
 
 # config.autoload_paths += Dir[Rails.root.join('app', 'models', '**/')]
 
+module TimeFormatSandbox
+  class Application < Rails::Application
+    config.time_zone = 'Asia/Tokyo'
+    config.i18n.default_locale = :ja
+  end
+end
+
 module PFKokontozaiGameIApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
