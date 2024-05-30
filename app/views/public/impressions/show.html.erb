@@ -4,8 +4,8 @@
 <% end %>
 <h4>タイトル：<%= @impression.title %> 投稿者：<%= @impression.user.name %></h4>
 <div><%= @impression.body %></div>
-<div>投稿日：<%= @impression.created_at.strftime('%Y/%m/%d') %></div>
-<div>更新日：<%= @impression.updated_at.strftime('%Y/%m/%d') %></div>
+<div>投稿日：<%= l @impression.created_at %></div>
+<div>更新日：<%= l @impression.updated_at %></div>
 <% if @impression.user == current_user %>
 <div><%= link_to "投稿を編集する", edit_impression_path(@impression.id) %></div>
 <div><%= link_to "投稿を削除する", impression_path(@impression.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></div>

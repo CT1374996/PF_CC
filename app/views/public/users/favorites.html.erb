@@ -10,7 +10,7 @@
   <tr>
     <td><%= link_to impression_path(impression.id) do %><%= impression.title %><% end %></td>
     <td><%= impression.user.name %></td>
-    <td><%= impression.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= l impression.created_at %></td>
   </tr>
   <% end %>
 </table>

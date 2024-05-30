@@ -1,8 +1,8 @@
 <div class="container">
 <h4>タイトル：<%= @impression.title %> 投稿者：<%= @impression.user.name %></h4>
 <div><%= @impression.body %></div>
-<div>投稿日：<%= @impression.created_at.strftime('%Y/%m/%d')%></div>
-<div>作成日：<%= @impression.updated_at.strftime('%Y/%m/%d')%></div>
+<div>投稿日：<%= l @impression.created_at %></div>
+<div>作成日：<%= l @impression.updated_at %></div>
 <div><%= link_to "削除", admin_impression_path(@impression), method: :delete, data: {confirm: "管理者権限により削除しますか？"}%></div>
 
 <h5>コメント一覧</h5>
