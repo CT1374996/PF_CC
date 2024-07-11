@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
     resources :users, only: [:show, :edit, :update] do
+      resources :reports, only: [:new, :create]
       resources :relationships, only: [:create, :destroy]
         get 'followings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
       end
     patch 'users/withdrawal/:user_id' => 'users#withdrawal', as: 'users_withdrawal'
+    resources :reports, only: [:index, :show, :update]
     resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
