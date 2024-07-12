@@ -37,4 +37,7 @@
 <div class="col"><%= link_to "いいねした投稿一覧", users_favorites_path(@user.id) %></div>
 </div>
 
+<% if @user != current_user %>
+<%= link_to "このユーザーを通報する", new_user_report_path(@user) %>
+<% end %>
 </div>

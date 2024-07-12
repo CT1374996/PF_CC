@@ -1,0 +1,18 @@
+<div class="container">
+<table class="table">
+<tr>
+<th>通報ID</th>
+<th>問題の会員</th>
+<th>通報者</th>
+<th>ステータス</th>
+</tr>
+<% @reports.each do |report| %>
+<tr>
+<td><%= link_to report.id, admin_report_path(report) %></td>
+<td><%= report.reported.name %></td>
+<td><%= report.reporter.name %></td>
+<td></td>
+</tr>
+<% end %>
+</table>
+</div>

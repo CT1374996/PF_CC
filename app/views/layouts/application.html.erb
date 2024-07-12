@@ -17,6 +17,7 @@
       <h4><%= link_to "古今東西ゲーム愛好会", admin_root_path %></h4>
       <%= link_to "会員一覧", admin_users_path %>
       <%= link_to "全体投稿一覧", admin_impressions_path %>
+      <%= link_to "通報", admin_reports_path %>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>

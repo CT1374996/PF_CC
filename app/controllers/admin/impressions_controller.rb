@@ -2,6 +2,7 @@ class Admin::ImpressionsController < ApplicationController
   before_action :authenticate_admin!
   def index
     @impressions = Impression.all
+    @impressions = Impression.order(created_at: :desc)
   end
 
   def show

@@ -48,6 +48,7 @@ class Public::SessionsController < Devise::SessionsController
     user = User.find_by(email: params[:user][:email])
     return if user.nil?
     return unless user.valid_password?(params[:user][:password]) && (user.is_active == false)
+    flash[:notice] = "お客様のアカウントは現在ご使用できません"
     redirect_to new_user_registration_path
   end
 end
