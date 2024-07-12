@@ -2,3 +2,10 @@ ja:
  time:
   formats:
    default: "%Y/%m/%d %H:%M:%S"
+
+ enums:
+    report:
+      status:
+        waiting: "対応待ち"
+        keep: "保留"
+        finish: "対応済み"

@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.text :like_game
       t.text :introduction
       t.boolean :is_active, null: false, default: true
+      t.boolean :user_status, default: false
 
       t.timestamps null: false
     end

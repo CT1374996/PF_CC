@@ -1,8 +1,14 @@
 <div class="container">
 <h3>通報詳細</h3>
-通報ID：<%= @report.id %>
-問題の会員：<%= @report.reported.name %>
-理由：<%= @report.reason %>
-URL等：<%= @report.url %>
-通報者：<%= @report.reporter.name %>
+<div>通報ID：<%= @report.id %></div>
+<div>問題の会員：<%= @report.reported.name %></div>
+<div>理由：<%= @report.reason %></div>
+<div>URL等：<%= @report.url %></div>
+<div>通報者：<%= @report.reporter.name %></div>
+<div>対応ステータス：
+<%= @report.status_i18n %>
+<%= form_with model: @report, url: admin_report_path(@report), method: :patch, local: true do |f| %>
+<%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
+<%= f.submit "更新" %>
+<% end %></div>
 </div>
