@@ -6,7 +6,7 @@
 <div>URL等：<%= @report.url %></div>
 <div>通報者：<%= @report.reporter.name %></div>
 <div>対応ステータス：
-<%= @report.status_i18n %>
+<%= @report.status %>
 <%= form_with model: @report, url: admin_report_path(@report), method: :patch, local: true do |f| %>
 <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
 <%= f.submit "更新" %>
