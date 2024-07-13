@@ -1,21 +1,12 @@
 <div class="container">
+<%= flash[:notice] %>
 <h2>新規会員登録</h2>
 <%= form_with model: @user, url: user_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-<div>名前</div>
-<div><%= f.text_field :name %></div>
-<div>メールアドレス</div>
-<div><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
-<div>パスワード
-<% if @minimum_password_length %>
-<em>(最低<%= @minimum_password_length %>文字)</em>
-<% end %></div>
-<div><%= f.password_field :password, autocomplete: "new-password" %></div>
-<div>パスワード(確認用)</div>
-<div><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
+<div><%= f.text_field :name, placeholder: "名前" %></div>
+<div><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %></div>
+<div><%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(最低6文字)" %></div>
+<div><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)" %></div>
+<%= f.submit "新規登録" %>
 <% end %>
 </div>
