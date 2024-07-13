@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2024_07_11_153926) do
     t.text "like_game"
     t.text "introduction"
     t.boolean "is_active", default: true, null: false
-    t.boolean "user_status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

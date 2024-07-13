@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       end
     patch 'users/withdrawal/:user_id' => 'users#withdrawal', as: 'users_withdrawal'
     resources :reports, only: [:index, :show, :update]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
