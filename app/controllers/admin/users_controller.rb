@@ -26,7 +26,8 @@ class Admin::UsersController < ApplicationController
   def withdrawal
     @user = User.find(params[:user_id])
     @user.update(is_active: false)
-    redirect_to admin_users_path
+    redirect_to admin_reports_path
+    flash[:notice] = "#{@user.name}さんを強制的に退会させました"
   end
 
   private

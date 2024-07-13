@@ -4,7 +4,6 @@
 <div>通報ID：<%= @report.id %></div>
 <div>問題の会員：<%= link_to admin_user_path(@report.reported_id) do %><%= @report.reported.name %><% end %></div>
 <div>理由：<%= @report.reason %></div>
-<div>URL等：<%= @report.url %></div>
 <div>通報者：<%= @report.reporter.name %></div>
 <div>対応ステータス：
 <%= @report.status %>

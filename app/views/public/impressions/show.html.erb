@@ -2,7 +2,8 @@
 <% if user_signed_in? %>
 <%= flash[:notice] %>
 <% end %>
-<h4>タイトル：<%= @impression.title %> 投稿者：<%= @impression.user.name %></h4>
+<h4>タイトル：<%= @impression.title %></h4>
+<h5>投稿者：<%= link_to user_path(@impression.user) do %><%= @impression.user.name %><% end %></h5>
 <div><%= @impression.body %></div>
 <div>投稿日：<%= l @impression.created_at %></div>
 <div>更新日：<%= l @impression.updated_at %></div>

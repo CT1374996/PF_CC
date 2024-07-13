@@ -1,4 +1,5 @@
 <div class="container">
+<%= flash[:notice] %>
 <table class="table">
 <tr>
 <th>通報ID</th>
@@ -8,7 +9,7 @@
 </tr>
 <% @reports.each do |report| %>
 <tr>
-<td><%= link_to report.id, admin_report_path(report) %></td>
+<td><%= link_to admin_report_path(report.id) do %><%= report.id %><% end %></td>
 <td><%= report.reported.name %></td>
 <td><%= report.reporter.name %></td>
 <td><%= report.status %></td>

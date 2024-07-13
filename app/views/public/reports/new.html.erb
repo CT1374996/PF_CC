@@ -3,8 +3,6 @@
 <%= form_with model:[@user, @report] do |f| %>
 <div>通報理由(必須)</div>
 <div><%= f.text_area :reason %></div>
-<div>問題の投稿のリンク(任意)</div>
-<div><%= f.text_area :url %></div>
 <%= f.submit "通報する" %>
 <% end %>
 </div>
