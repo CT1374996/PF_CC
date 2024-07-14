@@ -2,3 +2,24 @@ ja:
  time:
   formats:
    default: "%Y/%m/%d %H:%M:%S"
+
+ activerecord:
+  attributes:
+   user:
+    email: メールアドレス
+    password: パスワード
+    name: 名前
+  errors:
+   messages:
+    blank: を入力してください
+    too_long: は指定の文字数までです
+    too_short: は指定の文字数以上入れてください
+
+ devise:
+  registrations:
+   signed_up: 新規登録が完了しました
+  sessions:
+   signed_in: ログインしました
+   signed_out: ログアウトしました
+
+ errors:

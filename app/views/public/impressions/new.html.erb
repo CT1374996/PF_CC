@@ -1,8 +1,8 @@
 <div class="container">
 <h2>新規投稿</h2>
 <%= form_with model: @impression, url: impressions_path, method: :post do |f| %>
-<div>タイトル<br><%= f.text_field :title %></div>
-<div>本文<br><%= f.text_area :body %></div>
+<div>タイトル<br><%= f.text_field :title, placeholder: "最大30字" %></div>
+<div>本文<br><%= f.text_area :body, placeholder: "最大5000字" %></div>
 <%= f.submit "投稿する" %>
 <% end %>
 </div>

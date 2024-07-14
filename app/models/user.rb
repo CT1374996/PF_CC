@@ -24,7 +24,11 @@ class User < ApplicationRecord
          has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
          validates :name, presence: true
+         validates :name, uniqueness: true
+         validates :name, length: {maximum: 20}
          validates :email, presence: true
+         validates :like_game, length: {maximum: 300}
+         validates :introduction, length: {maximum: 300}
 
          def self.looks(search, word)
           if search == "perfect_match"

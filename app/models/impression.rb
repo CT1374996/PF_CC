@@ -3,8 +3,8 @@ class Impression < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :title, presence: true
-  validates :body, presence: true
+  validates :title, presence: true, length: {maximum: 30}
+  validates :body, presence: true, length: {maximum: 5000}
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

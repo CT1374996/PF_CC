@@ -3,7 +3,7 @@
 <%= flash[:notice] %>
 <% end %>
 <h4>タイトル：<%= @impression.title %></h4>
-<h5>投稿者：<%= link_to user_path(@impression.user) do %><%= @impression.user.name %><% end %></h5>
+<h5>投稿者：<%= @impression.user.name %></h5>
 <div><%= @impression.body %></div>
 <div>投稿日：<%= l @impression.created_at %></div>
 <div>更新日：<%= l @impression.updated_at %></div>
@@ -41,7 +41,7 @@
 <% if user_signed_in? %>
 <div>コメントはここから
 <%= form_with model: [@impression, @comment] do |f| %>
-<%= f.text_area :comment %>
+<%= f.text_area :comment, placeholder: "最大300字" %>
 <%= f.submit '送信'%>
 <% end %>
 </div>
