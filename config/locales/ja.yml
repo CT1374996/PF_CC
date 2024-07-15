@@ -3,6 +3,13 @@ ja:
   formats:
    default: "%Y/%m/%d %H:%M:%S"
 
+ enums:
+  report:
+   status:
+    waiting: 対応待ち
+    keep: 保留
+    finish: 対応済み
+
  activerecord:
   attributes:
    user:
@@ -21,5 +28,3 @@ ja:
   sessions:
    signed_in: ログインしました
    signed_out: ログアウトしました
-
- errors:
