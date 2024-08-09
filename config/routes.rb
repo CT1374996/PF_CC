@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       end
+    resources :notifications, only:[:index, :update, :destroy]
   end
   namespace :admin do
     root to: "homes#top"

@@ -1,0 +1,2 @@
+module Publid::NotificationsHelper
+end
