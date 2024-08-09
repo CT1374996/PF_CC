@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'users/impressions/index/:user_id' => 'users#index', as: 'users_impressions_index'
     get 'users/favorites/:user_id' => 'users#favorites', as: 'users_favorites'
+
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
     resources :users, only: [:show, :edit, :update] do
