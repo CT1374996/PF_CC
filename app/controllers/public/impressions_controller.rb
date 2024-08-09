@@ -2,8 +2,7 @@ class Public::ImpressionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   def index
-    @impressions = Impression.all
-    @impressions = Impression.order(created_at: :desc)
+    @impressions = Impression.order(created_at: :desc).page(params[:page])
   end
 
   def new
