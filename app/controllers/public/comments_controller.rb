@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.impression_id = @impression.id
     comment.save
+    @impression.create_notification_comment!(current_user, @comment.id)
     redirect_to impression_path(@impression.id)
   end
 

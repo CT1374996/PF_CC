@@ -6,6 +6,7 @@ class Public::FavoritesController < ApplicationController
     # favorite = Favorite.new(favorite_params)
     # favorite.user_id = current_user.id
     favorite.save
+    @impression.create_notification_favorite!(current_user)
     redirect_to impression_path(@impression.id)
   end
 

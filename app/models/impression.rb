@@ -26,7 +26,7 @@ class Impression < ApplicationRecord
     end
   end
 
-  def create_notification_like!(current_user)
+  def create_notification_favorite!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and impression_id = ? and action = ?", current_user.id, user_id, id, "favorite"])
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -37,14 +37,7 @@ class Impression < ApplicationRecord
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end
-      if notification.valid?
-        notification.save
-        puts "Notification has been created."
-      else
-        puts "Notification is invalid. Error messages: #{notification.errors.full_messages.join(',')}"
-      end
-    else
-      puts "Notification already exists."
+      notification.save if notification.valid?
     end
   end
 
@@ -53,9 +46,7 @@ class Impression < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id["user_id"])
     end
-    save_notification_comment!(current_user, comment_id, user_id)
-    if temp_ids.blank?
-    end
+    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
   end
 
   def save_notification_comment!(current_user, comment_id, visitor_id)
