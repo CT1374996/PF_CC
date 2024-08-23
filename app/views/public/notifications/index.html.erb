@@ -1,16 +1,8 @@
 <div class="container">
 <h4>通知一覧</h4>
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<% if notifications.exists? %>
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
-<div><%= @notification.visitor.name %>さんが</div>
-<% if @notification.action.follow %>あなたをフォローしました
-<% elsif @notification.action.favorite %>あなたの投稿にいいねしました
-<% else %>あなたの投稿にコメントしました
-<% end %>
-<div><%= time_ago_in_words(notification.created_at).upcase %></div>
-<% else %>
-<div>通知はありません</div>
+<% case @notification.action
+when "favorite" %>
+<% when "comment" %>
 <% end %>
 </div>
