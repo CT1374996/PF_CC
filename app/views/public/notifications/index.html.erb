@@ -1,8 +1,8 @@
 <div class="container">
 <h4>通知一覧</h4>
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<% case @notification.action
-when "favorite" %>
-<% when "comment" %>
+<% if @notifications.exists? %>
+<%= render @notifications %>
+<% else %>
+通知はありません
 <% end %>
 </div>
