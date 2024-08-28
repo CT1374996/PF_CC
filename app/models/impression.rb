@@ -51,8 +51,8 @@ class Impression < ApplicationRecord
   def save_notification_comment!(current_user, comment_id, visited_id)
     notification = current_user.active_notifications.new(
       impression_id: id,
-      comment_id:,
-      visited_id:,
+      comment_id: comment_id,
+      visited_id: visited_id,
       action: "comment"
       )
       if notification.visitor_id == notification.visited_id
